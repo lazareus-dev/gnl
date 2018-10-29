@@ -1,5 +1,5 @@
 
-NAME = gnl
+NAME = GNL
 
 CFLAGS = -Wall -Wextra -Werror
 
@@ -15,17 +15,21 @@ OBJECTS = $(SOURCES:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS)
-	make -C libft
-	gcc -c $(SOURCES) -o $(NAME)
+libft:
+	make -C libft/
+
+$(NAME): libft $(OBJECTS) $(INCLUDES)
+	$(CC) $(CFLAGS) main.c $(SOURCES) $(LIBFT) -o $(NAME)
 
 clean:
+	@ make clean -C libft/
 	@ rm -f $(OBJECTS)
 
 fclean: clean
+	@ make fclean -C libft/
 	@ rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re libft
 #.SILENT: $(OBJECTS)
