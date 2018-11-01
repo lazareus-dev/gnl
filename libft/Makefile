@@ -73,6 +73,7 @@ SOURCES = ft_atoi.c \
 	ft_strsep.c \
 	ft_strsplit.c \
 	ft_strspn.c \
+	ft_dict.c \
 	ft_strstr.c \
 	ft_strsub.c \
 	ft_strtrim.c \

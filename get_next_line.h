@@ -6,8 +6,10 @@
 # include <unistd.h>
 # include <sys/types.h>
 # include <stdlib.h>
+# include "libft/libft.h"
+#include <stdio.h> //to remove
 
-# define BUF_SIZE 32
+# define BUFF_SIZE 100
 int get_next_line(const int fd, char **line);
 
 #endif

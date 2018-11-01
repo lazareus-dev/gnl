@@ -15,11 +15,10 @@ OBJECTS = $(SOURCES:.c=.o)
 
 all: $(NAME)
 
-libft:
+$(NAME): $(OBJECTS) $(INCLUDES)
 	make -C libft/
-
-$(NAME): libft $(OBJECTS) $(INCLUDES)
 	$(CC) $(CFLAGS) main.c $(SOURCES) $(LIBFT) -o $(NAME)
+	./gnl test.txt
 
 clean:
 	@ make clean -C libft/
