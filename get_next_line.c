@@ -15,7 +15,7 @@
 
 int get_next_line(const int fd, char **line)
 {
-	static t_list *multi_fd = NULL;
+	static t_list *multi_fd;
 	t_dict *f;
 	char buf[BUFF_SIZE + 1];
 	int ret;
@@ -25,11 +25,11 @@ int get_next_line(const int fd, char **line)
 	f = ft_dict(fd, &multi_fd);
 	while (!(ft_isincharset('\n', f->value)) && ret > 0)
 	{
-		*line = f->value;
+		to_clean = f->value;
 		ret = read(fd, buf, BUFF_SIZE);
 		buf[ret] = '\0';
 		f->value = ft_strjoin(f->value, buf);
-		//ft_strdel(&to_clean);
+		ft_strdel(&to_clean);
 	}
 	if (ret > 0)
 	{
